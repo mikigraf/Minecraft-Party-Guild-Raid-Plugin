@@ -88,7 +88,7 @@ public boolean onCommand(CommandSender sender, Command cmd, String label, String
 			} 
 
 
-	//MYGUILD 100% WORKING
+	//Shows name of the guild, that the issuing player is in
 	else if(cmd.getName().equalsIgnoreCase(my_guild)){
 			if(args.length >= 0){
 				try{
@@ -116,7 +116,7 @@ public boolean onCommand(CommandSender sender, Command cmd, String label, String
 
 	
 	
-	//GINVITE 100% WORKING
+	//Invite player to a group
 //TODO: ADD /ACCEPT FOR THE INVITED PLAYER OR /DECLINE FOR INVITES CREATE NEW TABLE INVITES WITH LEADER, invited AND 
 	else if(cmd.getName().equalsIgnoreCase(guild_invite)){
 		if(args.length >= 0){
@@ -192,7 +192,7 @@ public boolean onCommand(CommandSender sender, Command cmd, String label, String
 	}
 
 				
-	//get members 100% working
+	//Show members of the group
 	else if(cmd.getName().equalsIgnoreCase(get_members)){
 		try{
 			String leader = null;
@@ -215,7 +215,7 @@ public boolean onCommand(CommandSender sender, Command cmd, String label, String
 	}
 	
 	
-	//LEAVEGUILD 100% WORKING
+	//Command for leaving the guild
 	else if(cmd.getName().equalsIgnoreCase(leave_guild)){
 		try{
 			Statement statementMG = c.createStatement();
@@ -320,96 +320,6 @@ public boolean onCommand(CommandSender sender, Command cmd, String label, String
 			}
 		}
 	
-	/**
-	else if(cmd.getName().equalsIgnoreCase(disband_party)){
-		try{
-			Statement statementMP = c.createStatement();
-			ResultSet myParty = statementMP.executeQuery("SELECT * FROM guild WHERE members = '" + sender.getName() + "';");
-			if(!myParty.next()){
-				sender.sendMessage(ChatColor.DARK_RED + "You are not in a group");
-				}else{
-				Statement statementPL = c.createStatement();
-				ResultSet partyLeader = statementPL.executeQuery("SELECT * FROM guild WHERE leader = '" + sender.getName() + "';");
-				if(!partyLeader.next()){
-					sender.sendMessage(ChatColor.DARK_GRAY + "You are not the leader of the group");
-					
-				}else if(!partyLeader.next()){
-					Statement statementDG = c.createStatement();
-					statementDG.executeUpdate("DELETE FROM party WHERE leader = '" + sender.getName() + "';" );
-					sender.sendMessage(ChatColor.DARK_AQUA + "Your group has been disbanded");
-				}
-				
-			else{
-				if(!partyLeader.next()){
-					sender.sendMessage(ChatColor.DARK_GRAY + "You are not the leader of the group");
-					
-				}else if(!partyLeader.next()){
-					Statement statementDG = c.createStatement();
-					statementDG.executeUpdate("DELETE FROM party WHERE leader = '" + sender.getName() + "';" );
-					sender.sendMessage(ChatColor.DARK_AQUA + "Your group has been disbanded");
-				}
-				
-			}
-				}
-		}catch(SQLException lg){
-			this.getLogger().info("DISBAND PARTY: SYSTEM IS NOT WORKING (Hartz IV)");
-			}
-		}
-		**/
-		
-		
-		/** %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	RAID SYSTEM	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% **/			
-		/** }else if(cmd.getName().equalsIgnoreCase("guild_invite") && args.length > 1){
-			Player player = Bukkit.getPlayerExact(args[1]);
-			try{
-			if(player != null && sender != player){
-				c = guild.openConnection();
-				Statement statement = c.createStatement();
-				ResultSet res = statement.executeQuery("SELECT * FROM guild WHERE name = '" + args[1] + "';" );
-				res.next();
-				if(res.getString(args[1]) == null){
-					ResultSet senderGuild = statement.executeQuery("SELECT * FROM guild WHERE name = '" + sender.getName() + "';" );
-					if(senderGuild != null){
-						statement.executeQuery(" INSERT INTO guild ('name', 'members') VALUES (' " + senderGuild + "' ,'"+ args[1] +"'"); 
-						sender.sendMessage(ChatColor.GREEN + "Player " + args[1] + " has been added to the guild");
-						}
-				}else{
-					sender.sendMessage(ChatColor.DARK_RED + args[1] + " is already in a guild");
-				}
-			//GUILD INVITE AND GUILD KICK TODO: ADD MECHANISMS
-			sender.sendMessage(ChatColor.GREEN + sender.getName() + " " + "has invited" + " " + ChatColor.AQUA + args[1]);
-			return true;
-			}else if(sender == player){
-				sender.sendMessage(ChatColor.RED + sender.getName() + " ,You can't invite yourself");
-				return false;
-			}else if(player == null){
-				sender.sendMessage(ChatColor.YELLOW + "Player " + args[1] + "is " + ChatColor.RED + " offline ");
-				return false;
-			}
-			}catch(SQLException ex){
-				this.getLogger().info("TEST PLUGIN ERROR");
-			}
-			
-			
-		
-			/**
-	}else if(cmd.getName().equalsIgnoreCase("gkick")){
-			sender.sendMessage(ChatColor.RED + args[1] + " " + "has been kicked by " + sender.getName());
-			return true;
-	}else if(cmd.getName().equalsIgnoreCase("pinvite") && args.length == 2){
-			//PARTY INVITE AND PARTY KICK || MAX. 1 PARTY LEADER + 4 MEMBERS TODO: ADD MECHANISMS
-			sender.sendMessage(ChatColor.GREEN + sender.getName() + " " + "has invited" + " " + ChatColor.AQUA + args[1]);
-			return true;
-	}else if(cmd.getName().equalsIgnoreCase("pkick")){
-			sender.sendMessage(ChatColor.RED + args[1] + " " + "has been kicked from the party" + " by " + sender.getName());
-			return true;
-			//RAID INVITE AND RAID KICK || MAX. 1 LEADER + 9 MEMBERS TODO: ADD MECHANISMS
-	}else if(cmd.getName().equalsIgnoreCase("rinvite") && args.length == 2){
-			sender.sendMessage(ChatColor.GREEN + sender.getName() + " " + "has invited" + " " + ChatColor.AQUA + args[1]);
-			return true;
-	}else if(cmd.getName().equalsIgnoreCase("rkick")){
-			sender.sendMessage(ChatColor.RED + args[1] + " " + "has been kicked from the raid by " + sender.getName());
-			return true; **/
 
 	return false;
 }
