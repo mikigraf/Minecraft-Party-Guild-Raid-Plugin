@@ -41,7 +41,6 @@ public boolean onCommand(CommandSender sender, Command cmd, String label, String
 	String create_guild = "cguild";
 	String guild_invite = "ginvite";
 	String guild_invite_accept = "guildaccept";
-	//String guild_invite_decline = "gdecline";
 	String my_guild = "myguild";
 	String get_members = "gmembers";
 	String kick_member = "gkick";
@@ -50,9 +49,7 @@ public boolean onCommand(CommandSender sender, Command cmd, String label, String
 
 	/** PARTY COMMANDS **/
 	String create_party = "cparty";
-	//String disband_party = "disbandparty";
 	String leave_party = "leaveparty";
-	//String kick_player_from_the_party = "kparty";
 			
 	/** RAID COMMANDS **/
 	
@@ -60,14 +57,12 @@ public boolean onCommand(CommandSender sender, Command cmd, String label, String
 	
 	
 	/** %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	EASTER EGGS	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% **/	
-	//100% working
 	if(cmd.getName().equalsIgnoreCase(easter_egg1)){
 			sender.sendMessage(ChatColor.BLUE + "Yoooooo" + " " + ChatColor.RED + sender.getName());
 			return true;
 			} 
 	
 	/** %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	GUILD SYSTEM	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% **/
-	//CGUILD 100% WORKING
 	 else if(cmd.getName().equalsIgnoreCase(create_guild)){
 			if(args.length >= 0){
 				try{
@@ -117,7 +112,6 @@ public boolean onCommand(CommandSender sender, Command cmd, String label, String
 	
 	
 	//Invite player to a group
-//TODO: ADD /ACCEPT FOR THE INVITED PLAYER OR /DECLINE FOR INVITES CREATE NEW TABLE INVITES WITH LEADER, invited AND 
 	else if(cmd.getName().equalsIgnoreCase(guild_invite)){
 		if(args.length >= 0){
 			try{
@@ -285,6 +279,7 @@ public boolean onCommand(CommandSender sender, Command cmd, String label, String
 			this.getLogger().info("DISBAND GUILD: SYSTEM IS NOT WORKING (Hartz IV)");
 			}
 		}
+		
 		/** %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	PARTY SYSTEM	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% **/
 	else if(cmd.getName().equalsIgnoreCase(create_party)){
 			try{
